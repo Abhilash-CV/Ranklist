@@ -27,7 +27,7 @@ if uploaded_file:
 
     df["dob"] = pd.to_datetime(df["dob"], dayfirst=True, errors="coerce")
 
-    df["score"] = df["right"] * 4 + df["wrong"] * (-1)
+    df["score"] = df["right"] * 4 - df["wrong"] * (-1)
 
     summary = df.groupby(["roll_no", "appl_no", "dob"]).agg(
         total_correct=("right", "sum"),
